@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-sm-4" id="un-eaten">
+        <ul class="list-group list-group-flush">
+            {{#each burgers}}
+                {{#unless devoured}}
+                    <li class="list-group-item">
+                        {{this.burger_name}}
+                        <button type="button" class="btn btn-outline-danger btn-sm eat-burger" data-id="{{this.id}}">Eat
+                        </button>
+                    </li>
+                {{/unless}}
+            {{/each}}
+        </ul>
+    </div>
+    <div class="col-sm-4">
+        <img src="assets/img/burger1.png" class="img-fluid" alt="Hamburger">
+        <div class="card text-center">
+            <div class="card-header">Add a Burger</div>
+            <div class="card-body">
+                <form action="/api/burgers" method="post">
+                    <div class="form-group">
+                        <label for="add-burger">Burger Name:</label>
+                        <input type="text" class="form-control" id="add-burger">
+                    </div>
+                    <button type="button" class="btn btn-success" id="submit-burger">Add Burger</button>
+                </form>
+            </div>
+            <div class="card-footer text-muted">
+                <a href="https://www.youtube.com/watch?v=Z6oeAdemFZw" target="_blank"><---></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4" id="eaten">
+        <ul class="list-group list-group-flush">
+            {{#each burgers}}
+                {{#if devoured}}
+                    <li class="list-group-item">
+                        {{this.burger_name}}
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.eat-burger').on('click', function (event) {
+            const id = $(this).data('id');
+            console.log(id);
+
+            $.ajax(`/api/burgers/${id}`, {
+                type: 'PUT',
+            }).then(function () {
+                location.reload();
+            });
+        });
+
+        $('#submit-burger').on('click', function (event) {
+
+            console.log('new Burger!');
+
+            const newBurger = {
+                burger_name: $('#add-burger').val().trim()
+            };
+
+            console.log(newBurger);
+
+            $.ajax('/api/burgers', {
+                type: 'POST',
+                data: newBurger
+            }).then(function () {
+                console.log('Added New Burger');
+                location.reload()
+            });
+        });
+    });
+
+</script>
