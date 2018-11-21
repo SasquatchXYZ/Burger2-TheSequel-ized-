@@ -3,20 +3,24 @@ const express = require('express');
 const router = express.Router();
 
 // Import the Model (burger.js) to use it's database functions.
-const burger = require('../models/burger');
+const db = require('../models/');
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Create all the routes and the logic for those routes.
 
 // GET Route to render all of the burgers from the database into the index.handlebars (homepage) on load.
 router.get('/', function (req, res) {
-    burger.selectAll(function (data) {
+    db.Burgers.findAll({}).then(function(data) {
+        console.log(data);
+    });
+
+    /*burger.selectAll(function (data) {
         const hbsObject = {
             burgers: data
         };
         console.log(hbsObject);
         res.render('index', hbsObject);
-    });
+    });*/
 });
 
 // POST Route to add a new burger to the database and page.

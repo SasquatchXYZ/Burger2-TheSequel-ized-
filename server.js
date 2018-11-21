@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 8080;
 const app = express();
 
+const db = require('./models');
+
 // Set up Express to be able to handle the static content for the app, from the 'public' directory.
 app.use(express.static('public'));
 
@@ -25,6 +27,8 @@ const routes = require('./controllers/burgers_controller');
 app.use(routes);
 
 //Start our server so that it can begin listening to client requests.
-app.listen(PORT, function () {
-    console.log(`Server listening on: http://localhost:${PORT}`);
+db.sequelize.sync().then(function() {
+    app.listen(PORT, function () {
+        console.log(`Server listening on: http://localhost:${PORT}`);
+    });
 });
