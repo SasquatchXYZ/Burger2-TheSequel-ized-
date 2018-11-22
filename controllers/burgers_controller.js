@@ -11,7 +11,6 @@ const db = require('../models/');
 // GET Route to render all of the burgers from the database into the index.handlebars (homepage) on load.
 router.get('/', function (req, res) {
     db.Burgers.findAll({}).then(function(data) {
-        console.log(data);
         const hbsObject = {Burgers: data};
         res.render('index', hbsObject)
     });
@@ -46,7 +45,7 @@ router.post('/api/burgers', function (req, res) {
 router.put('/api/burgers/:id', function (req, res) {
     console.log(req.params.id);
 
-    /*db.Burgers.update({
+    db.Burgers.update({
         devoured: true
     }, {
         where: {
@@ -54,7 +53,7 @@ router.put('/api/burgers/:id', function (req, res) {
         }
     }).then(function(dbBurgers){
         res.json(dbBurgers)
-    });*/
+    });
 
     /*burger.updateOne(name, function (result) {
         if (result.changedRows === 0) {
