@@ -10,7 +10,9 @@ const db = require('../models/');
 
 // GET Route to render all of the burgers from the database into the index.handlebars (homepage) on load.
 router.get('/', function (req, res) {
-    db.Burgers.findAll({}).then(function(data) {
+    db.Burgers.findAll({
+        order: ['burger_name', 'DESC']
+    }).then(function(data) {
         const hbsObject = {Burgers: data};
         res.render('index', hbsObject)
     });
