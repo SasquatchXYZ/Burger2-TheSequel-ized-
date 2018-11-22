@@ -43,6 +43,16 @@ router.post('/api/burgers', function (req, res) {
     });*/
 });
 
+router.post('/api/customers', function (req, res) {
+    console.log(req.body);
+    db.Customers.create({
+        customer_name: req.body.customer_name,
+        burger_num: req.body.burger_num
+    }).then(function(dbCustomers) {
+        res.json(dbCustomers)
+    });
+});
+
 // PUT Route to 'EAT' the burger, it changes the burgers status in the database and moves it on the page.
 router.put('/api/burgers/:id', function (req, res) {
     console.log(req.params.id);
