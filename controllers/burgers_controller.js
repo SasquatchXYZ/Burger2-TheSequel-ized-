@@ -10,10 +10,10 @@ const db = require('../models/');
 
 // GET Route to render all of the burgers from the database into the index.handlebars (homepage) on load.
 router.get('/', function (req, res) {
-    db.Burgers.findAll({
+    db.Burger.findAll({
         order: [['burger_name', 'ASC']]
     }).then(function(data) {
-        const hbsObject = {Burgers: data};
+        const hbsObject = {Burger: data};
         res.render('index', hbsObject)
     });
 
@@ -30,7 +30,7 @@ router.get('/', function (req, res) {
 router.post('/api/burgers', function (req, res) {
     //console.log(req.body);
 
-    db.Burgers.create({
+    db.Burger.create({
         burger_name: req.body.burger_name,
         devoured: req.body.devoured
     }).then(function(dbBurgers) {
@@ -45,7 +45,7 @@ router.post('/api/burgers', function (req, res) {
 
 router.post('/api/customers', function (req, res) {
     console.log(req.body);
-    db.Customers.create({
+    db.Customer.create({
         customer_name: req.body.customer_name,
         burger_num: req.body.burger_num
     }).then(function(dbCustomers) {
@@ -57,7 +57,7 @@ router.post('/api/customers', function (req, res) {
 router.put('/api/burgers/:id', function (req, res) {
     console.log(req.params.id);
 
-    db.Burgers.update({
+    db.Burger.update({
         devoured: true
     }, {
         where: {
