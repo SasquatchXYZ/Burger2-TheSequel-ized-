@@ -6,10 +6,6 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 len: [1, 30]
             }
-        },
-        burger_num: {
-            type: DataTypes.INTEGER,
-            allowNull: false
         }
     });
 

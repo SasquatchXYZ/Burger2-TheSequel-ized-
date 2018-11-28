@@ -1,6 +1,6 @@
-USE burgers_db;
+USE burgers2_db;
 
-INSERT INTO burgers (burger_name)
+INSERT INTO burger (burger_name)
 VALUES ('The Plain Ol'' Original Vortex Burger' ),
        ('The Vortex Cheeseburger'),
        ('The Vortex Bacon Cheeseburger'),
