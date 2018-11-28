@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-4" id="un-eaten">
         <ul class="list-group list-group-flush">
-            {{#each Burgers}}
+            {{#each Burger}}
                 {{#unless devoured}}
                     <li class="list-group-item">
                         {{this.burger_name}}
@@ -32,7 +32,7 @@
     </div>
     <div class="col-sm-4" id="eaten">
         <ul class="list-group list-group-flush">
-            {{#each Burgers}}
+            {{#each Burger}}
                 {{#if devoured}}
                     <li class="list-group-item">
                         {{this.burger_name}}

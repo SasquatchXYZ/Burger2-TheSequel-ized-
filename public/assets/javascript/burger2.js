@@ -40,24 +40,25 @@ $(function () {
 
             const newCustomer = {
                 customer_name: customer,
-                burger_num: id
+                //burger_num: id
             };
 
             $.ajax('/api/customers', {
                 type: 'POST',
                 data: newCustomer
             }).then(function(results) {
-                //console.log(results.burger_num);
-                $.ajax(`/api/burgers/${results.burger_num}`, {
+                console.log(results.id);
+                $.ajax(`/api/burgers/${id}`, {
                     type: 'PUT',
+                    data: results
                 }).then(function () {
                     location.reload();
                 });
             })
         });
+    }
 
-
-
+    function updateBurger() {
 
     }
 });
