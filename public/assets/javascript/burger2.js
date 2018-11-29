@@ -5,11 +5,13 @@ $(function () {
         const id = $(this).data('id');
         console.log(id);
 
-        $.ajax(`/api/burgers/${id}`, {
+        createCustomer(id);
+
+        /*$.ajax(`/api/burgers/${id}`, {
             type: 'PUT',
         }).then(function () {
             location.reload();
-        });
+        });*/
 
     });
 
@@ -33,15 +35,16 @@ $(function () {
     // -----------------------------------------------------------------------------------------------------------------
     // Associations Coding Below
 
-    function logCustomer(id) {
+    function createCustomer(id) {
+
         $('#customer_modal').modal('show');
+
         $('#submit-customer').on('click', function (event) {
             const customer = $('#add-customer').val().trim();
             console.log(customer);
 
             const newCustomer = {
                 customer_name: customer,
-                BurgerId: id
             };
 
             console.log(newCustomer);
@@ -50,13 +53,22 @@ $(function () {
                 type: 'POST',
                 data: newCustomer
             }).then(function (results) {
-                console.log(results);
-                $.ajax(`/api/burgers/${results.BurgerId}`, {
+                console.log(results.id);
+
+                const assignCustomer = {
+                    CustomerId: results.id
+                };
+
+                console.log(assignCustomer);
+
+                $.ajax(`/api/burgers/${id}`, {
                     type: 'PUT',
-                    //data: results
-                }).then(function () {
-                    location.reload();
+                    data: assignCustomer
+                }).then(function (res) {
+                    console.log(res);
+                    //location.reload();
                 });
+
             })
         });
     }

@@ -14,6 +14,9 @@ module.exports = function (sequelize, DataTypes) {
     });
     // -----------------------------------------------------------------------------------------------------------------
     // Associations Coding Below
+    Burger.associate = function(models) {
+        Burger.belongsTo(models.Customer)
+    };
 
     /*Burger.associate = function(models) {
         Burger.belongsTo(models.Customer, {
