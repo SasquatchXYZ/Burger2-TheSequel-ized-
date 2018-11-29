@@ -12,7 +12,7 @@ const db = require('../models/');
 router.get('/', function (req, res) {
     db.Burger.findAll({
         order: [['burger_name', 'ASC']]
-    }).then(function(data) {
+    }).then(function (data) {
         const hbsObject = {Burger: data};
         res.render('index', hbsObject)
     });
@@ -33,7 +33,7 @@ router.post('/api/burgers', function (req, res) {
     db.Burger.create({
         burger_name: req.body.burger_name,
         devoured: req.body.devoured
-    }).then(function(dbBurgers) {
+    }).then(function (dbBurgers) {
         res.json(dbBurgers)
     });
 
@@ -45,27 +45,25 @@ router.post('/api/burgers', function (req, res) {
 
 router.post('/api/customers', function (req, res) {
     console.log(req.body);
-    db.Customer.create({
-        customer_name: req.body.customer_name,
-        //burger_num: req.body.burger_num
-    }).then(function(dbCustomers) {
-        res.json(dbCustomers)
-    });
+    db.Customer.create(req.body)
+        .then(function (dbCustomers) {
+            res.json(dbCustomers)
+        });
 });
 
 // PUT Route to 'EAT' the burger, it changes the burgers status in the database and moves it on the page.
 router.put('/api/burgers/:id', function (req, res) {
     console.log(req.params.id);
-    console.log(req.body.id);
 
     db.Burger.update({
         devoured: true,
-        foreignKey: req.body.id
     }, {
         where: {
             id: req.params.id
-        }
-    }).then(function(dbBurgers){
+        },
+        // include: [db.Customer]
+    }).then(function (dbBurgers) {
+        console.log(dbBurgers);
         res.json(dbBurgers)
     });
 

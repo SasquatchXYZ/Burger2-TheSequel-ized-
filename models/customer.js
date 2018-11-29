@@ -15,9 +15,9 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         });
-        Customer.hasMany(models.Burger, {
+        /*Customer.hasMany(models.Burger, {
             onDelete: 'CASCADE'
-        })
+        })*/
     };
     return Customer
 };

@@ -40,17 +40,19 @@ $(function () {
 
             const newCustomer = {
                 customer_name: customer,
-                //burger_num: id
+                BurgerId: id
             };
+
+            console.log(newCustomer);
 
             $.ajax('/api/customers', {
                 type: 'POST',
                 data: newCustomer
             }).then(function(results) {
-                console.log(results.id);
-                $.ajax(`/api/burgers/${id}`, {
+                console.log(results);
+                $.ajax(`/api/burgers/${results.BurgerId}`, {
                     type: 'PUT',
-                    data: results
+                    //data: results
                 }).then(function () {
                     location.reload();
                 });
