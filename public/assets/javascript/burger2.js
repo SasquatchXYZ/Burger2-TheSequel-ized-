@@ -5,8 +5,8 @@ $(function () {
         const id = $(this).data('id');
         console.log(id);
 
-        //getCustomers();
         createCustomer(id);
+        // getCustomers();
 
     });
 
@@ -68,9 +68,12 @@ $(function () {
         });
     }
 
-    function getCustomers() {
-        $.get('/api/customers', function(cust) {
 
+    function getCustomers() {
+        $.ajax('/api/customers', {
+            type: 'GET'
+        }).then(function(custArray) {
+            console.log(custArray);
             $('#customer_modal').modal('show')
         })
     }

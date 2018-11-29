@@ -16,7 +16,6 @@ router.get('/', function (req, res) {
         order: [['burger_name', 'ASC']]
     }).then(function (data) {
         const hbsObject = {Burger: data};
-        console.log(hbsObject);
         res.render('index', hbsObject)
     });
 
@@ -53,24 +52,19 @@ router.put('/api/burgers/:id', function (req, res) {
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Associations Coding Below
+
 router.get('/api/burgers', function (req, res) {
-    db.Burger.findAll({include: [db.Customer]}).then(function (show) {
-        res.json(show)
-    })
+    db.Burger.findAll({include: [db.Customer]})
+        .then(function (show) {
+            res.json(show)
+        })
 });
 
-/*router.get('/api/customers', function (req, res) {
-    db.Customer.findAll().then(function (show) {
-        res.json(show)
-    })
-});*/
-
 router.get('/api/customers', function (req, res) {
-    db.Customer.findAll().then(function (show) {
-        hbsCust = {Customer: show};
-        console.log(hbsCust);
-        res.render('index', hbsCust)
-    })
+    db.Customer.findAll()
+        .then(function (show) {
+            res.json(show)
+        })
 });
 
 router.post('/api/customers', function (req, res) {
@@ -82,6 +76,15 @@ router.post('/api/customers', function (req, res) {
         });
 
 });
+
+
+/*router.get('/api/customers', function (req, res) {
+    db.Customer.findAll().then(function (show) {
+        hbsCust = {Customer: show};
+        console.log(hbsCust);
+        res.json(hbsCust)
+    })
+});*/
 
 // Export routes for server.js to use.
 module.exports = router;

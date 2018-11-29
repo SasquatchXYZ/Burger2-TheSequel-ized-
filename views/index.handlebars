@@ -55,16 +55,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                <ul class="list-group list-group-flush">
-                    {{#each Customer}}
-                        <li class="list-group-item">
-                            {{this.customer_name}}
-                            <button type="button" class="btn btn-outline-danrsger btn-sm eat-burger" data-id="{{this.id}}">Eat
-                            </button>
-                        </li>
-
-                    {{/each}}
-                </ul>
                 <form action="/api/customers" method="post">
                     <div class="form-group">
                         <label for="add-customer">Name:</label>
