@@ -37,13 +37,13 @@ router.put('/api/burgers/:id', function (req, res) {
     console.log(req.params.id);
     console.log(req.body);
 
-    /*db.Burger.update(req.body, {
+    db.Burger.update(req.body, {
         where: {
             id: req.params.id
         }
     }).then(function(dbBC) {
         console.log(dbBC)
-    })*/
+    })
 
     /*db.Burger.update({
         devoured: true,

@@ -41,19 +41,19 @@ $(function () {
 
         $('#submit-customer').on('click', function (event) {
             const customer = $('#add-customer').val().trim();
-            console.log(customer);
+            //console.log(customer);
 
             const newCustomer = {
                 customer_name: customer,
             };
 
-            console.log(newCustomer);
+            //console.log(newCustomer);
 
             $.ajax('/api/customers', {
                 type: 'POST',
                 data: newCustomer
             }).then(function (results) {
-                console.log(results.id);
+                //console.log(results.id);
 
                 const assignCustomer = {
                     CustomerId: results.id
