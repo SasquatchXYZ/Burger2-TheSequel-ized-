@@ -44,3 +44,39 @@
         </div>
     </div>
 </div>
+
+<div class="modal" tabindex="-1" role="dialog" id="customer_modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Enter Customer Name</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group list-group-flush">
+                    {{#each Customer}}
+                        <li class="list-group-item">
+                            {{this.customer_name}}
+                            <button type="button" class="btn btn-outline-danrsger btn-sm eat-burger" data-id="{{this.id}}">Eat
+                            </button>
+                        </li>
+
+                    {{/each}}
+                </ul>
+                <form action="/api/customers" method="post">
+                    <div class="form-group">
+                        <label for="add-customer">Name:</label>
+                        <input type="text" class="form-control" id="add-customer">
+                    </div>
+                    <button type="button" class="btn btn-success" id="submit-customer">Submit</button>
+                </form>
+            </div>
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>-->
+        </div>
+    </div>
+</div>

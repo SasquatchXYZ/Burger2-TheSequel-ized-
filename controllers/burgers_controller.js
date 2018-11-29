@@ -16,6 +16,7 @@ router.get('/', function (req, res) {
         order: [['burger_name', 'ASC']]
     }).then(function (data) {
         const hbsObject = {Burger: data};
+        console.log(hbsObject);
         res.render('index', hbsObject)
     });
 
@@ -35,8 +36,6 @@ router.post('/api/burgers', function (req, res) {
 
 // PUT Route to 'EAT' the burger, it changes the burgers status in the database and moves it on the page.
 router.put('/api/burgers/:id', function (req, res) {
-    // console.log(req.params.id);
-    // console.log(req.body.CustomerId);
 
     db.Burger.update({
         devoured: true,
@@ -45,34 +44,32 @@ router.put('/api/burgers/:id', function (req, res) {
         where: {
             id: req.params.id
         }
-    }).then(function(dbBC) {
+    }).then(function (dbBC) {
         console.log(dbBC);
         res.json(dbBC)
     })
 
-    /*db.Burger.update({
-        devoured: true,
-    }, {
-        where: {
-            id: req.params.id
-        }
-    }).then(function (dbBurgers) {
-        console.log(dbBurgers);
-        res.json(dbBurgers)
-    });*/
 });
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Associations Coding Below
-router.get('/api/burgers', function(req, res) {
-    db.Burger.findAll({include: [db.Customer]}).then(function(show) {
+router.get('/api/burgers', function (req, res) {
+    db.Burger.findAll({include: [db.Customer]}).then(function (show) {
         res.json(show)
     })
 });
 
-router.get('/api/customers', function(req, res) {
-    db.Customer.findAll().then(function(show) {
+/*router.get('/api/customers', function (req, res) {
+    db.Customer.findAll().then(function (show) {
         res.json(show)
+    })
+});*/
+
+router.get('/api/customers', function (req, res) {
+    db.Customer.findAll().then(function (show) {
+        hbsCust = {Customer: show};
+        console.log(hbsCust);
+        res.render('index', hbsCust)
     })
 });
 

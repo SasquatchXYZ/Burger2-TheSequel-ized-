@@ -5,13 +5,8 @@ $(function () {
         const id = $(this).data('id');
         console.log(id);
 
+        //getCustomers();
         createCustomer(id);
-
-        /*$.ajax(`/api/burgers/${id}`, {
-            type: 'PUT',
-        }).then(function () {
-            location.reload();
-        });*/
 
     });
 
@@ -73,7 +68,10 @@ $(function () {
         });
     }
 
-    function updateBurger() {
+    function getCustomers() {
+        $.get('/api/customers', function(cust) {
 
+            $('#customer_modal').modal('show')
+        })
     }
 });
