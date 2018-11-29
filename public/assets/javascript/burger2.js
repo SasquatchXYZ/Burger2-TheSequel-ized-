@@ -4,12 +4,12 @@ $(function () {
         const id = $(this).data('id');
         console.log(id);
 
-         logCustomer(id);
-        /*$.ajax(`/api/burgers/${id}`, {
+         //logCustomer(id);
+        $.ajax(`/api/burgers/${id}`, {
             type: 'PUT',
         }).then(function () {
             location.reload();
-        });*/
+        });
     });
 
     $('#submit-burger').on('click', function (event) {

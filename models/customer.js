@@ -9,15 +9,15 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
-    Customer.associate = function(models) {
+    /*Customer.associate = function(models) {
         Customer.belongsTo(models.Burger, {
             foreignKey: {
                 allowNull: false
             }
         });
-        /*Customer.hasMany(models.Burger, {
+        /!*Customer.hasMany(models.Burger, {
             onDelete: 'CASCADE'
-        })*/
-    };
+        })*!/
+    };*/
     return Customer
 };
