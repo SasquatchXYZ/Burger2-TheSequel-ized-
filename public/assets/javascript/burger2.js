@@ -1,27 +1,24 @@
 $(function () {
 
     $('.eat-burger').on('click', function (event) {
+
         const id = $(this).data('id');
         console.log(id);
 
-         //logCustomer(id);
         $.ajax(`/api/burgers/${id}`, {
             type: 'PUT',
         }).then(function () {
             location.reload();
         });
+
     });
 
     $('#submit-burger').on('click', function (event) {
-
-        console.log('new Burger!');
 
         const newBurger = {
             burger_name: $('#add-burger').val().trim(),
             devoured: false
         };
-
-        console.log(newBurger);
 
         $.ajax('/api/burgers', {
             type: 'POST',
@@ -30,11 +27,15 @@ $(function () {
             console.log('Added New Burger');
             location.reload()
         });
+
     });
+
+    // -----------------------------------------------------------------------------------------------------------------
+    // Associations Coding Below
 
     function logCustomer(id) {
         $('#customer_modal').modal('show');
-        $('#submit-customer').on('click', function(event) {
+        $('#submit-customer').on('click', function (event) {
             const customer = $('#add-customer').val().trim();
             console.log(customer);
 
@@ -48,7 +49,7 @@ $(function () {
             $.ajax('/api/customers', {
                 type: 'POST',
                 data: newCustomer
-            }).then(function(results) {
+            }).then(function (results) {
                 console.log(results);
                 $.ajax(`/api/burgers/${results.BurgerId}`, {
                     type: 'PUT',

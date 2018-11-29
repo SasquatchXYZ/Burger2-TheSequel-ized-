@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     const Burger = sequelize.define('Burger', {
         burger_name: {
             type: DataTypes.STRING,
@@ -12,6 +12,8 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: false
         }
     });
+    // -----------------------------------------------------------------------------------------------------------------
+    // Associations Coding Below
 
     /*Burger.associate = function(models) {
         Burger.belongsTo(models.Customer, {
