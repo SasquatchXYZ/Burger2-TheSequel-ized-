@@ -35,7 +35,7 @@
             {{#each Burger}}
                 {{#if devoured}}
                     <li class="list-group-item">
-                        {{this.burger_name}}
+                        {{this.burger_name}}, {{this.Customer.customer_name}}
                     </li>
                 {{/if}}
             {{/each}}

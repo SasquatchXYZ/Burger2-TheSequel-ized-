@@ -64,9 +64,9 @@ $(function () {
                 $.ajax(`/api/burgers/${id}`, {
                     type: 'PUT',
                     data: assignCustomer
-                }).then(function (res) {
-                    console.log(res);
-                    //location.reload();
+                }).then(function () {
+                    //console.log(res);
+                    location.reload();
                 });
 
             })
