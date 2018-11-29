@@ -31,14 +31,16 @@
         </div>
     </div>
     <div class="col-sm-4" id="eaten">
-        <ul class="list-group list-group-flush">
+        <div class="list-group list-group-flush">
             {{#each Burger}}
                 {{#if devoured}}
-                    <li class="list-group-item">
-                        {{this.burger_name}}, {{this.Customer.customer_name}}
-                    </li>
+                    <div class="list-group-item">
+                        {{this.burger_name}}
+                        <br>
+                        <small>-- Ordered By: {{this.Customer.customer_name}}</small>
+                    </div>
                 {{/if}}
             {{/each}}
-        </ul>
+        </div>
     </div>
 </div>
