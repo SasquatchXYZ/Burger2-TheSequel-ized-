@@ -1,72 +1,72 @@
 <div class="row">
-    <div class="col-sm-4" id="un-eaten">
-        <ul class="list-group list-group-flush">
-            {{#each Burger}}
-                {{#unless devoured}}
-                    <li class="list-group-item">
-                        {{this.burger_name}}
-                        <button type="button" class="btn btn-outline-danger btn-sm eat-burger" data-id="{{this.id}}">Eat
-                        </button>
-                    </li>
-                {{/unless}}
-            {{/each}}
-        </ul>
+  <div class="col-sm-4" id="un-eaten">
+    <ul class="list-group list-group-flush">
+      {{#each Burger}}
+        {{#unless devoured}}
+          <li class="list-group-item">
+            {{this.burger_name}}
+            <button type="button" class="btn btn-outline-danger btn-sm eat-burger" data-id="{{this.id}}">Eat
+            </button>
+          </li>
+        {{/unless}}
+      {{/each}}
+    </ul>
+  </div>
+  <div class="col-sm-4">
+    <img src="assets/img/burger1.png" class="img-fluid" alt="Hamburger">
+    <div class="card text-center">
+      <div class="card-header">Add a Burger</div>
+      <div class="card-body">
+        <form action="/api/burgers" method="post">
+          <div class="form-group">
+            <label for="add-burger">Burger Name:</label>
+            <input type="text" class="form-control" id="add-burger">
+          </div>
+          <button type="button" class="btn btn-success" id="submit-burger">Add Burger</button>
+        </form>
+      </div>
+      <div class="card-footer text-muted">
+        <a href="https://www.youtube.com/watch?v=Z6oeAdemFZw" target="_blank"><---></a>
+      </div>
     </div>
-    <div class="col-sm-4">
-        <img src="assets/img/burger1.png" class="img-fluid" alt="Hamburger">
-        <div class="card text-center">
-            <div class="card-header">Add a Burger</div>
-            <div class="card-body">
-                <form action="/api/burgers" method="post">
-                    <div class="form-group">
-                        <label for="add-burger">Burger Name:</label>
-                        <input type="text" class="form-control" id="add-burger">
-                    </div>
-                    <button type="button" class="btn btn-success" id="submit-burger">Add Burger</button>
-                </form>
-            </div>
-            <div class="card-footer text-muted">
-                <a href="https://www.youtube.com/watch?v=Z6oeAdemFZw" target="_blank"><---></a>
-            </div>
-        </div>
+  </div>
+  <div class="col-sm-4" id="eaten">
+    <div class="list-group list-group-flush">
+      {{#each Burger}}
+        {{#if devoured}}
+          <div class="list-group-item">
+            {{this.burger_name}}
+            <br>
+            <small>-- Ordered By: {{this.Customer.customer_name}}</small>
+          </div>
+        {{/if}}
+      {{/each}}
     </div>
-    <div class="col-sm-4" id="eaten">
-        <div class="list-group list-group-flush">
-            {{#each Burger}}
-                {{#if devoured}}
-                    <div class="list-group-item">
-                        {{this.burger_name}}
-                        <br>
-                        <small>-- Ordered By: {{this.Customer.customer_name}}</small>
-                    </div>
-                {{/if}}
-            {{/each}}
-        </div>
-    </div>
+  </div>
 </div>
 
 <div class="modal" tabindex="-1" role="dialog" id="customer_modal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Enter Customer Name</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="/api/customers" method="post">
-                    <div class="form-group">
-                        <label for="add-customer">Name:</label>
-                        <input type="text" class="form-control" id="add-customer">
-                    </div>
-                    <button type="button" class="btn btn-success" id="submit-customer">Submit</button>
-                </form>
-            </div>
-            <!--<div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>-->
-        </div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Enter Customer Name</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/api/customers" method="post">
+          <div class="form-group">
+            <label for="add-customer">Name:</label>
+            <input type="text" class="form-control" id="add-customer">
+          </div>
+          <button type="button" class="btn btn-success" id="submit-customer">Submit</button>
+        </form>
+      </div>
+      <!--<div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+      </div>-->
     </div>
+  </div>
 </div>
