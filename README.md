@@ -63,7 +63,7 @@ Notes to come...
 ## Built With
 
 * [Node.js](https://nodejs.org/en/) - Runtime Environment
-* [MySQL](https://www.mysql.com/) - Runtime Environment
+* [MySQL](https://www.mysql.com/) - Database
 * [Sequelize](http://docs.sequelizejs.com/) - ORM
 * [Handlebars](https://handlebarsjs.com/) - Templating Engine
 * [Express.js](https://expressjs.com/) - Web Framework
