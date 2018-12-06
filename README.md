@@ -4,6 +4,8 @@
 
 Burger is a web app that revolves around one thing... Eating Burgers.  This is the sequel to the previous version, but this time rather that using my own ORM to query the database, Sequelize has been used.  It is web application using a MySQL database to store the burgers, Node & Express to run the server and app, with Handlebars as the templating engine to render tasty noms to the HTML.
 
+![Screenshot](public/assets/img/burger2screenshot.png)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.  See deployment for notes on how to deploy the project on a live system.
@@ -58,7 +60,9 @@ That is really all there is to starting the application running, after that ever
 
 ## Deployment
 
-Notes to come...
+* [Deployed Site](https://burger-2-the-sequel.herokuapp.com/)
+
+I personally have this application deployed using Heroku, with the JawsDB serving to link my database to the application.  More notes and info on this to come...
 
 ## Built With
 
@@ -68,7 +72,6 @@ Notes to come...
 * [Handlebars](https://handlebarsjs.com/) - Templating Engine
 * [Express.js](https://expressjs.com/) - Web Framework
 * [Bootstrap](https://getbootstrap.com/) - CSS Framework
-* [Font Awesome](https://fontawesome.com/) - Icons
 * [gitignore.io](https://www.gitignore.io/) - For creating the .gitignore
 * [WebStorm](https://www.jetbrains.com/webstorm/) - JavaScript IDE
 * [DataGrip](https://www.jetbrains.com/datagrip/) - Database IDE
